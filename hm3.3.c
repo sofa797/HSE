@@ -114,11 +114,11 @@ int main() {
         scanf("%d", &nn);
         if (l == 1)
         {
-            Rows(N, M, matrix, nn, greater);
+            menu[0](N, M, matrix, nn, greater);
         }
         if (l == 2)
         {
-            Rows(N, M, matrix, nn, less);
+            menu[0](N, M, matrix, nn, less);
         }
     }
     if (k == 2)
@@ -128,11 +128,11 @@ int main() {
         scanf("%d", &nn);
         if (l == 1)
         {
-            Columns(N, M, matrix, nn, greater);
+            menu[1](N, M, matrix, nn, greater);
         }
         if (l == 2)
         {
-            Columns(N, M, matrix, nn, less);
+            menu[1](N, M, matrix, nn, less);
         }
     }
 
