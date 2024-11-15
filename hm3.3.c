@@ -72,14 +72,17 @@ void Columns(int N, int M, int **a, int n, int(*pred)(int, int))
     }
 }
 
-int main() {
+int main(int argc, char* argv[]){
+    int N,M;
+    char** ptrArgv = argv+1;
+    N = **ptrArgv - '0';
+    ptrArgv++;
+    M = **ptrArgv - '0';
+
     operation *menu = NULL;
     menu = (operation*)malloc(2 * sizeof(operation));
     menu[0] = (void*)Rows;
     menu[1] = (void*)Columns;
-    int N, M; // N - rows, M - columns
-    printf("Enter matrix size: ");
-    scanf("%d %d", &N, &M);
     int **matrix = (int **)calloc(N, sizeof(int *));
     for (int i = 0; i < N; i++) {
         matrix[i] = (int *)calloc(M, sizeof(int));
@@ -114,11 +117,11 @@ int main() {
         scanf("%d", &nn);
         if (l == 1)
         {
-            menu[0](N, M, matrix, nn, greater);
+            Rows(N, M, matrix, nn, greater);
         }
         if (l == 2)
         {
-            menu[0](N, M, matrix, nn, less);
+            Rows(N, M, matrix, nn, less);
         }
     }
     if (k == 2)
@@ -128,11 +131,11 @@ int main() {
         scanf("%d", &nn);
         if (l == 1)
         {
-            menu[1](N, M, matrix, nn, greater);
+            Columns(N, M, matrix, nn, greater);
         }
         if (l == 2)
         {
-            menu[1](N, M, matrix, nn, less);
+            Columns(N, M, matrix, nn, less);
         }
     }
 
