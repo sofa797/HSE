@@ -3,27 +3,27 @@
 
 #include "functions.h"
 
-typedef int** SudokuField;
+typedef int** playField;
 
 int bt() {
     int size;
     printf("Enter field size (4, 9): ");  //Ввод размерности поля пользователем
     scanf("%d", &size);
 
-    if (size != 4 && size != 9) {             // Проверка на корректность введенного значения
-        printf("Incorrect field size :(\n");
+    if (size != 4 && size != 9) { // Проверка на корректность введенного значения
+        printf("Incorrect field size :( try again\n");
         return 1;
     }
 
-    SudokuField field = (SudokuField)malloc(size * sizeof(int*));
-    CellStatusField status = (CellStatusField)malloc(size * sizeof(int*));
+    playField field = (playField)malloc(size * sizeof(int*)); // Объявление и выделение памяти для двумерного массива (поля игры)
+    color status = (color)malloc(size * sizeof(int*)); // Объявление и выделение памяти для двумерного массива (значения: 0, 1, 2 для определения цвета значения)
 
     for (int i = 0; i < size; i++) {
-        field[i] = (int*)malloc(size * sizeof(int));
-        status[i] = (int*)malloc(size * sizeof(int));
+        field[i] = (int*)malloc(size * sizeof(int)); // Выделение памяти для каждой строчки поля (для введённых значений)
+        status[i] = (int*)malloc(size * sizeof(int)); // Выделение памяти для каждой строчки поля (для определения ывета значения)
     }
 
-    initializeField(field, size);
+    makeField(field, size);
 
     char choice;
     printf("Choose field type (e - empty, p - partially filled): "); // Выбор пустого или частчно заполненного поля перд началом игры
@@ -37,45 +37,48 @@ int bt() {
         return 1;
     }
 
-    int selected_row = 0, selected_col = 0;
+    int row = 0, col = 0;
     char input;
 
-    while (1) {
-        printField(field, status, size, selected_row, selected_col);
+    while (1) { // Пока пользователь вводит значения, выполняется следующий цикл
+        printField(field, status, size, row, col);
         fflush(stdout);
 
         input = _getch();
 
-        // Обработка перемещения
-        if (input == 'w' && selected_row > 0) selected_row--;
-        if (input == 's' && selected_row < size - 1) selected_row++;
-        if (input == 'a' && selected_col > 0) selected_col--;
-        if (input == 'd' && selected_col < size - 1) selected_col++;
+        if (input == '\x1B') { // Досрочный выход из программы с помощью клавиши ESС
+            break;;
+        }
 
-        // Обработка ввода числа
+        // Перемещение по полю
+        if (input == 'w' && row > 0) row--;
+        if (input == 's' && row < size - 1) row++;
+        if (input == 'a' && col > 0) col--;
+        if (input == 'd' && col < size - 1) col++;
+
+        // Заполнение поля
         if (input >= '1' && input <= '9') {
             int num = input - '0';
-            *(*(field + selected_row) + selected_col) = num;
+            *(*(field + row) + col) = num;
         }
 
         // Вывод поля после каждого ввода числа
-        printField(field, status, size, selected_row, selected_col);
+        printField(field, status, size, row, col);
         fflush(stdout);
 
         // Проверка завершенности и корректности заполненного поля
-        if (isSudokuCompleted(field, size)) {
-            if (isSudokuCompletedCorrectly(field, size)) {
+        if (completeField(field, size)) {
+            if (completeFieldCorrectly(field, size)) {
                 printf("Sudoku solved correctly!\n");
             } else {
                 printf("Incorrect solution :( \n");
             }
-            break;  // Завершение игры
+            break;  // Завершение игры 
         }
 
-        // if (input == 'q') break;  // Выход из игры
     }
 
-    freeField(field, status, size);
+    freeField(field, status, size); // Освобождение памяти
     return 0;
 }
 
