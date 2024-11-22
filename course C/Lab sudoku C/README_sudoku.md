@@ -26,6 +26,7 @@ gcc sudokumain.o
 3. Чтобы узнать результат игры нажмите клавишу ``` ESP ```
 ## Пример работы в режиме пользователя
 ![Неправильно решённая Судоку](https://github.com/user-attachments/assets/6bdf4f1e-0831-4ffd-98c4-b61e6cded4a5) ![Правильно решённая Судоку](https://github.com/user-attachments/assets/963f9fc4-8620-40c6-9b49-a91c0803f5b6)
+
 Неправильно решённая Судоку                           Правильно решённая Судоку
 ## Пример работы в режиме брутфорса
 ![брутфорс судоку](https://github.com/user-attachments/assets/9ffe8044-fa32-4aa9-ac68-1a67acbc2381)
