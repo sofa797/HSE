@@ -3,8 +3,8 @@
 
 #include "functions.h"
 
-typedef int** SudokuField;
-typedef int** CellStatusField;
+typedef int** playField;
+typedef int** color;
 
 int bt() {
     int size;
@@ -16,20 +16,20 @@ int bt() {
         return 1;
     }
 
-    SudokuField field = (SudokuField)malloc(size * sizeof(int*));
-    CellStatusField status = (CellStatusField)malloc(size * sizeof(int*));
+    playField field = (playField)malloc(size * sizeof(int*)); // Объявление и выделение памяти для двумерного массива (поля игры)
+    color status = (color)malloc(size * sizeof(int*)); // Объявление и выделение памяти для двумерного массива (значения: 0, 1, 2 для определения цвета значения)
 
     for (int i = 0; i < size; i++) {
-        field[i] = (int*)malloc(size * sizeof(int));
-        status[i] = (int*)malloc(size * sizeof(int));
+        field[i] = (int*)malloc(size * sizeof(int)); // Выделение памяти для каждой строчки поля (для введённых значений)
+        status[i] = (int*)malloc(size * sizeof(int)); // Выделение памяти для каждой строчки поля (для определения ывета значения)
     }
 
-    fillPartialField(field, status, size);
-    printField(field, status, size, -1, -1);
+    fillPartialField(field, status, size); // Частичное заполнение поля
+    printField(field, status, size, -1, -1); // Вывод поля в терминале
 
-    solveSudoku(field, status, size);
+    solveSudoku(field, status, size); // Решение Судоку брутфорсом
 
-    freeField(field, status, size);
+    freeField(field, status, size); // Освобождение памяти
     return 0;
 }
 
