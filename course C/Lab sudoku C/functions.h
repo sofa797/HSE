@@ -7,15 +7,15 @@
 #include <time.h>
 #include <conio.h>
 
-typedef int** SudokuField;
-typedef int** CellStatusField;
+typedef int** playField;
+typedef int** color;
 
 void setColor(int color) {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
 
-// Инициализация ячеек нулями для значений в поле
-void initializeField(SudokuField field, int size) {
+// Функция инициализация ячеек нулями для значений в поле
+void makeField(playField field, int size) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             *(*(field + i) + j) = 0;
@@ -23,8 +23,8 @@ void initializeField(SudokuField field, int size) {
     }
 }
 
-// Инициализация ячеек нулями для определения цвета значений
-void initializeCellStatus(CellStatusField status, int size) {
+// Функция нициализации ячеек нулями для определения цвета значений
+void makeColor(color status, int size) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             *(*(status + i) + j) = 0;  // 0 - нет значения(белый цвет), 1 - сгенерированное программой(синий цвет), 2 - введенное пользователем(зеленый цвет)
@@ -32,12 +32,12 @@ void initializeCellStatus(CellStatusField status, int size) {
     }
 }
 
-// Вывод поля игры в терминале
-void printField(SudokuField field, CellStatusField status, int size, int selected_row, int selected_col) {
+// Функция вывода поля игры в терминале
+void printField(playField field, color status, int size, int row, int col) {
     system("cls");
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
-            if (i == selected_row && j == selected_col) {
+            if (i == row && j == col) {
                 printf("[");
             } else {
                 printf(" ");
@@ -55,7 +55,7 @@ void printField(SudokuField field, CellStatusField status, int size, int selecte
                 setColor(15);
             }
 
-            if (i == selected_row && j == selected_col) {
+            if (i == row && j == col) {
                 printf("]");
             }
         }
@@ -63,20 +63,21 @@ void printField(SudokuField field, CellStatusField status, int size, int selecte
     }
 }
 
-int isValidMove(SudokuField field, int size, int row, int col, int num) {
+// Функция для проверки, верно ли введено значение
+int correctMove(playField field, int size, int row, int col, int num) {
     for (int i = 0; i < size; i++) {
         if (*(*(field + row) + i) == num || *(*(field + i) + col) == num) {
             return 0;
         }
     }
 
-    int squareSize = (int)sqrt(size);
-    int squareRow = row - row % squareSize;
-    int squareCol = col - col % squareSize;
+    int sizesq = (int)sqrt(size);
+    int rowsq = row - row % sizesq;
+    int colsq = col - col % sizesq;
     
-    for (int i = 0; i < squareSize; i++) {
-        for (int j = 0; j < squareSize; j++) {
-            if (*(*(field + squareRow + i) + squareCol + j) == num) {
+    for (int i = 0; i < sizesq; i++) {
+        for (int j = 0; j < sizesq; j++) {
+            if (*(*(field + rowsq + i) + colsq + j) == num) {
                 return 0;
             }
         }
@@ -85,12 +86,13 @@ int isValidMove(SudokuField field, int size, int row, int col, int num) {
     return 1;
 }
 
-int solveSudoku(SudokuField field, CellStatusField status, int size) {
+// Функция для решения Судоку брутфорсом
+int solveSudoku(playField field, color status, int size) {
     for (int row = 0; row < size; row++) {
         for (int col = 0; col < size; col++) {
             if (*(*(field + row) + col) == 0) {
                 for (int num = 1; num <= size; num++) {
-                    if (isValidMove(field, size, row, col, num)) {
+                    if (correctMove(field, size, row, col, num)) {
                         *(*(field + row) + col) = num;
                         *(*(status + row) + col) = 2;
                         printField(field, status, size, -1, -1);
@@ -108,15 +110,15 @@ int solveSudoku(SudokuField field, CellStatusField status, int size) {
     }
     return 1;
 }
-
-int fillSudoku(SudokuField field, int size) {
+ // Функция для автоматического заполнеия поля, чтобы сгенерировать частично заполненное поле
+int fillField(playField field, int size) {
     for (int row = 0; row < size; row++) {
         for (int col = 0; col < size; col++) {
             if (*(*(field + row) + col) == 0) {
                 for (int num = 1; num <= size; num++) {
-                    if (isValidMove(field, size, row, col, num)) {
+                    if (correctMove(field, size, row, col, num)) {
                         *(*(field + row) + col) = num;
-                        if (fillSudoku(field, size)) {
+                        if (fillField(field, size)) {
                             return 1;
                         }
                         *(*(field + row) + col) = 0;
@@ -128,18 +130,18 @@ int fillSudoku(SudokuField field, int size) {
     }
     return 1;
 }
-
-void fillPartialField(SudokuField field, CellStatusField status, int size) {
+ // Функция для частично заполненного поля
+void fillPartialField(playField field, color status, int size) {
     srand(time(NULL));
-    initializeField(field, size);
-    initializeCellStatus(status, size);
-    fillSudoku(field, size);
+    makeField(field, size);
+    makeColor(status, size);
+    fillField(field, size);
 
     int count;
     if (size == 4) {
-        count = rand() % 16;
+        count = rand() % 16; // Количество ячеек, которые будут случайно заполнены для поля 4*4
     } else {
-        count = rand() % 81;
+        count = rand() % 81; // Количество ячеек, которые будут случайно заполнены для поля 9*9
     }
 
     while (count > 0) {
@@ -153,7 +155,8 @@ void fillPartialField(SudokuField field, CellStatusField status, int size) {
     }
 }
 
-int isSudokuCompleted(SudokuField field, int size) {
+// Функция для проверки, полностью ли заполнено игровое поле
+int completeField(playField field, int size) {
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             if (*(*(field + i) + j) == 0) {
@@ -164,9 +167,9 @@ int isSudokuCompleted(SudokuField field, int size) {
     return 1;
 }
 
-// Проверка на корректность заполненного поьзователем поля игры
-int isSudokuCompletedCorrectly(SudokuField field, int size) {
-    int squareSize = (int)sqrt(size);
+// Функция для проверки на корректность заполненного поьзователем поля игры
+int completeFieldCorrectly(playField field, int size) {
+    int sizesq = (int)sqrt(size);
     
     // Проверка строк и столбцов
     for (int row = 0; row < size; row++) {
@@ -191,12 +194,12 @@ int isSudokuCompletedCorrectly(SudokuField field, int size) {
     }
     
     // Проверка на повторы в квадратах
-    for (int squareRow = 0; squareRow < size; squareRow += squareSize) {
-        for (int squareCol = 0; squareCol < size; squareCol += squareSize) {
+    for (int rowsq = 0; rowsq < size; rowsq += sizesq) {
+        for (int colsq = 0; colsq < size; colsq += sizesq) {
             int seen[10] = {0}; // Массив для отслеживания чисел в квадрате
-            for (int i = 0; i < squareSize; i++) {
-                for (int j = 0; j < squareSize; j++) {
-                    int num = *(*(field + squareRow + i) + squareCol + j);
+            for (int i = 0; i < sizesq; i++) {
+                for (int j = 0; j < sizesq; j++) {
+                    int num = *(*(field + rowsq + i) + colsq + j);
                     if (num == 0) continue;  // Пропустить пустые клетки
                     if (seen[num]) return 0;  // Если число уже встречалось в квадрате
                     seen[num] = 1;
@@ -208,8 +211,8 @@ int isSudokuCompletedCorrectly(SudokuField field, int size) {
     return 1;  // Все проверки прошли успешно
 }
 
-// Освобождение памяти
-void freeField(SudokuField field, CellStatusField status, int size) {
+// Функция для освобожденя памяти
+void freeField(playField field, color status, int size) {
     for (int i = 0; i < size; i++) {
         free(field[i]);
         free(status[i]);
