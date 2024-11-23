@@ -6,8 +6,11 @@ Merge sort is a sorting algorithm that follows the divide-and-conquer approach. 
 In simple terms, we can say that the process of merge sort is to divide the array into two halves, sort each half, and then merge the sorted halves back together. This process is repeated until the entire array is sorted.
 ### 2 Algorithm
 Merge sort is a popular sorting algorithm known for its efficiency and stability.
-It follows a divide-and-conquer approach to sort a given array of elements.
+It follows a divide-and-conquer approach to sort a given array of elements. 
+
 #### 2.1 How does merge sort work?
+
+
 ##### 1. Split: Recursively divide a list or array into two halves until it can no
 longer be split.
 ##### 2. Conquer: Each subarray is sorted individually using the merge sort algorithm.
@@ -128,29 +131,29 @@ int main()
 ### 4 Complexity Analysis of Merge Sort
 #### 1. Time Complexity:
 • Best Case: O(n log n), When the array is already sorted or nearly
-sorted.
-• Average Case: O(n log n), When the array is randomly ordered.
-• Worst Case: O(n log n), When the array is sorted in reverse order.
+sorted.  
+• Average Case: O(n log n), When the array is randomly ordered.  
+• Worst Case: O(n log n), When the array is sorted in reverse order.  
 #### 2. Auxiliary Space:
 • O(n), Additional space is required for the temporary array used
 during merging.
 ### 5 Advantages of Merge Sort
 • Stability: Merge sort is a stable sorting algorithm, which means it maintains
-the relative order of equal elements in the input array.
+the relative order of equal elements in the input array.  
 • Guaranteed worst-case performance: Merge sort has a worst-case
 time complexity of O(N logN), which means it performs well even on
-large datasets.
-• Simple to implement: The divide-and-conquer approach is straightforward.
+large datasets.  
+• Simple to implement: The divide-and-conquer approach is straightforward.  
 • Naturally Parallel: We independently merge subarrays that makes it
-suitable for parallel processing.
+suitable for parallel processing.  
 ### 6 Disadvantages of Merge Sort
 • Space complexity: Merge sort requires additional memory to store the
-merged sub-arrays during the sorting process.
+merged sub-arrays during the sorting process.  
 • Not in place: Merge sort is not an in-place sorting algorithm, which
 means that additional memory is required to store the sorted data. This
-can be a disadvantage in applications where memory usage is an issue.
+can be a disadvantage in applications where memory usage is an issue.  
 • S is lower than QuickSort overall: QuickSort is more cache friendly
-since it works in-place.
+since it works in-place.  
 
 - [Контест №1 (16.11.24-17.11.24)](https://github.com/sofa797/HSE/tree/main/course%20C)
 - [Контест №2 (07.12.24-08.12.24)]()
