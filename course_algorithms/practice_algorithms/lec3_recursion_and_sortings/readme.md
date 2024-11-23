@@ -163,7 +163,7 @@ merged sub-arrays during the sorting process.
 means that additional memory is required to store the sorted data. This
 can be a disadvantage in applications where memory usage is an issue.  
 • S is lower than QuickSort overall: QuickSort is more cache friendly
-since it works in-place.  
+since it works in-place.           
 
 
 
@@ -279,5 +279,5 @@ int main() {
 • It is not a good choice for small data sets.  
 • It is not a stable sort, meaning that if two elements have the same key, their relative order will not be preserved in the sorted output in case of quick sort, because here we are swapping elements according to the pivot’s position (without considering their original positions).  
 
-- [Merge Sort](https://www.geeksforgeeks.org/merge-sort/)
-- [Quick Sort](https://www.geeksforgeeks.org/quick-sort-algorithm/)
+[Merge Sort](https://www.geeksforgeeks.org/merge-sort/)
+[Quick Sort](https://www.geeksforgeeks.org/quick-sort-algorithm/)
