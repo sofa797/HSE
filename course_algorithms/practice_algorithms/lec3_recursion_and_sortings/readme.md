@@ -10,11 +10,6 @@ In simple terms, we can say that the process of merge sort is to divide the arra
 Merge sort is a popular sorting algorithm known for its efficiency and stability.
 It follows a divide-and-conquer approach to sort a given array of elements.     
 
-![11](https://github.com/user-attachments/assets/e210cc27-5555-47b9-a667-388c2291d385)
-![12](https://github.com/user-attachments/assets/83a394e6-f6cb-4c3d-8b66-57ec2f7fa9ef)
-![13](https://github.com/user-attachments/assets/8f26b215-5e19-45e2-b12d-9e148881c9f5)
-![14](https://github.com/user-attachments/assets/5bd7b317-f8f9-4fc7-8bec-15587df3f63d)
-
 ***
 #### 2.1 How does merge sort work?
 
@@ -26,6 +21,12 @@ longer be split.
 ***
 #### 2.2 Illustration of merge sort
 Let’s sort the array or list [38, 27, 43, 10] using merge sort.  
+
+![11](https://github.com/user-attachments/assets/e210cc27-5555-47b9-a667-388c2291d385)
+![12](https://github.com/user-attachments/assets/83a394e6-f6cb-4c3d-8b66-57ec2f7fa9ef)
+![13](https://github.com/user-attachments/assets/8f26b215-5e19-45e2-b12d-9e148881c9f5)
+![14](https://github.com/user-attachments/assets/5bd7b317-f8f9-4fc7-8bec-15587df3f63d)   
+
 ##### 1. Divide array
 • [38, 27] and [43, 10].    
 • [38, 27] is divided into [38] and [27].  
