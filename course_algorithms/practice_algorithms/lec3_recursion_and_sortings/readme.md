@@ -7,7 +7,7 @@ In simple terms, we can say that the process of merge sort is to divide the arra
 ### 2 Algorithm
 Merge sort is a popular sorting algorithm known for its efficiency and stability.
 It follows a divide-and-conquer approach to sort a given array of elements. 
-
+***
 #### 2.1 How does merge sort work?
 
 
