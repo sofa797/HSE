@@ -12,21 +12,21 @@ It follows a divide-and-conquer approach to sort a given array of elements.
 
 
 ##### 1. Split: Recursively divide a list or array into two halves until it can no
-longer be split.
-##### 2. Conquer: Each subarray is sorted individually using the merge sort algorithm.
-##### 3. Merge: The sorted subarrays are merged back in sorted order. The process continues until all elements from both subarrays have been merged.
+longer be split.  
+##### 2. Conquer: Each subarray is sorted individually using the merge sort algorithm.  
+##### 3. Merge: The sorted subarrays are merged back in sorted order. The process continues until all elements from both subarrays have been merged.  
 ***
 #### 2.2 Illustration of merge sort
-Let’s sort the array or list [38, 27, 43, 10] using merge sort.
+Let’s sort the array or list [38, 27, 43, 10] using merge sort.  
 ##### 1. Divide array
-• [38, 27] and [43, 10].  
+• [38, 27] and [43, 10].    
 • [38, 27] is divided into [38] and [27].  
 • [43, 10] is divided into [43] and [10]  
 ##### 2. Conquer
-• [38] already sorted.
-• [27] already sorted.
-• [43] already sorted.
-• [10] already sorted.
+• [38] already sorted.  
+• [27] already sorted.  
+• [43] already sorted.  
+• [10] already sorted.  
 ##### 3. Combine:
 • Combine [38] and [27] to get [27, 38].  
 • Combine [43] and [10] to get [10, 43].  
@@ -131,6 +131,7 @@ int main()
 }
 ```
 ### 4 Complexity Analysis of Merge Sort
+***
 #### 1. Time Complexity:
 • Best Case: O(n log n), When the array is already sorted or nearly
 sorted.  
@@ -139,6 +140,7 @@ sorted.
 #### 2. Auxiliary Space:
 • O(n), Additional space is required for the temporary array used
 during merging.
+***
 ### 5 Advantages of Merge Sort
 • Stability: Merge sort is a stable sorting algorithm, which means it maintains
 the relative order of equal elements in the input array.  
