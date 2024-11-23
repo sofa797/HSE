@@ -6,5 +6,5 @@ Here are collected all the tasks I implemented from the contests in the course "
 - [Lection 3](https://github.com/sofa797/HSE/tree/main/course_algorithms/practice_algorithms/lec3_recursion_and_sortings)
 
 ## Contests
-- [Contest 1 (11/16/24 - 11/17/24)](https://github.com/sofa797/HSE/tree/main/course_algorithms/1st_contest)
-- [Contest 2 (12/07/24 - 12/08/24)]()
+- [Contest 1 (11/16/24 - 11/17/24)](https://github.com/sofa797/HSE/tree/main/course_algorithms/contests/1st_contest)
+- [Contest 2 (12/07/24 - 12/08/24)](https://github.com/sofa797/HSE/tree/main/course_algorithms/contests/2nd_contest)
