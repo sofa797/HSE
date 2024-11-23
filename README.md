@@ -1,6 +1,6 @@
-# Навигация
-Здесь собраны мои проекты в рамках университета
+# Navigation
+Here are my projects at the university
 
-## Курсы
-- [Прораммирование на C](https://github.com/sofa797/HSE/tree/main/course%20C)
-- [Алгоритмы и структуры данных](https://github.com/sofa797/HSE/tree/main/course_algorithms)
+## Courses
+- [Programming C](https://github.com/sofa797/HSE/tree/main/course%20C)
+- [Algorithms and data structures](https://github.com/sofa797/HSE/tree/main/course_algorithms)
