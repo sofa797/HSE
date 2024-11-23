@@ -279,5 +279,5 @@ int main() {
 • It is not a good choice for small data sets.  
 • It is not a stable sort, meaning that if two elements have the same key, their relative order will not be preserved in the sorted output in case of quick sort, because here we are swapping elements according to the pivot’s position (without considering their original positions).  
 
-- [Контест №1 (16.11.24-17.11.24)](https://github.com/sofa797/HSE/tree/main/course%20C)
-- [Контест №2 (07.12.24-08.12.24)]()
+- [Merge Sort](https://www.geeksforgeeks.org/merge-sort/)
+- [Quick Sort](https://www.geeksforgeeks.org/quick-sort-algorithm/)
