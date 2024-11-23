@@ -159,5 +159,18 @@ can be a disadvantage in applications where memory usage is an issue.
 • S is lower than QuickSort overall: QuickSort is more cache friendly
 since it works in-place.  
 
+## Quick sort
+### 1 Introduction
+QuickSort is a sorting algorithm based on the Divide and Conquer that picks an element as a pivot and partitions the given array around the picked pivot by placing the pivot in its correct position in the sorted array.
+### 2 Algorithm
+### 2.1 How does QuickSort Algorithm work?
+QuickSort works on the principle of divide and conquer, breaking down the problem into smaller sub-problems.
+
+There are mainly three steps in the algorithm:
+
+• Choose a Pivot: Select an element from the array as the pivot. The choice of pivot can vary (e.g., first element, last element, random element, or median).  
+• Partition the Array: Rearrange the array around the pivot. After partitioning, all elements smaller than the pivot will be on its left, and all elements greater than the pivot will be on its right. The pivot is then in its correct position, and we obtain the index of the pivot.  
+• Recursively Call: Recursively apply the same process to the two partitioned sub-arrays (left and right of the pivot).  
+• Base Case: The recursion stops when there is only one element left in the sub-array, as a single element is already sorted.
 - [Контест №1 (16.11.24-17.11.24)](https://github.com/sofa797/HSE/tree/main/course%20C)
 - [Контест №2 (07.12.24-08.12.24)]()
