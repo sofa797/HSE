@@ -2,8 +2,10 @@
 
 ## Merge sort
 ### 1 Introduction
+
 Merge sort is a sorting algorithm that follows the divide-and-conquer approach. It works by recursively dividing the input array into smaller subarrays and sorting those subarrays then merging them back together to obtain the sorted array.
 In simple terms, we can say that the process of merge sort is to divide the array into two halves, sort each half, and then merge the sorted halves back together. This process is repeated until the entire array is sorted.
+
 ### 2 Algorithm
 Merge sort is a popular sorting algorithm known for its efficiency and stability.
 It follows a divide-and-conquer approach to sort a given array of elements. 
@@ -33,6 +35,7 @@ Let’s sort the array or list [38, 27, 43, 10] using merge sort.
 • Concatenate [27, 38] and [10, 43] to get final sorted list [10, 27, 38, 43].  
 Therefore, the sorted list is [10, 27, 38, 43].  
 ***
+
 ### 3 Implementation of merge sort
 ```
 // C program for Merge Sort
@@ -130,6 +133,7 @@ int main()
     return 0;
 }
 ```
+
 ### 4 Complexity Analysis of Merge Sort
 ***
 #### 1. Time Complexity:
@@ -141,6 +145,7 @@ sorted.
 • O(n), Additional space is required for the temporary array used
 during merging.
 ***
+
 ### 5 Advantages of Merge Sort
 • Stability: Merge sort is a stable sorting algorithm, which means it maintains
 the relative order of equal elements in the input array.  
@@ -150,6 +155,7 @@ large datasets.
 • Simple to implement: The divide-and-conquer approach is straightforward.  
 • Naturally Parallel: We independently merge subarrays that makes it
 suitable for parallel processing.  
+
 ### 6 Disadvantages of Merge Sort
 • Space complexity: Merge sort requires additional memory to store the
 merged sub-arrays during the sorting process.  
@@ -159,10 +165,14 @@ can be a disadvantage in applications where memory usage is an issue.
 • S is lower than QuickSort overall: QuickSort is more cache friendly
 since it works in-place.  
 
+
+
 ## Quick sort
+
 ### 1 Introduction
 QuickSort is a sorting algorithm based on the Divide and Conquer that picks an element as a pivot and partitions the given array around the picked pivot by placing the pivot in its correct position in the sorted array.
 ### 2 Algorithm
+***
 #### 2.1 How does QuickSort Algorithm work?
 QuickSort works on the principle of divide and conquer, breaking down the problem into smaller sub-problems.
 
@@ -172,7 +182,102 @@ There are mainly three steps in the algorithm:
 • Partition the Array: Rearrange the array around the pivot. After partitioning, all elements smaller than the pivot will be on its left, and all elements greater than the pivot will be on its right. The pivot is then in its correct position, and we obtain the index of the pivot.  
 • Recursively Call: Recursively apply the same process to the two partitioned sub-arrays (left and right of the pivot).  
 • Base Case: The recursion stops when there is only one element left in the sub-array, as a single element is already sorted.  
+
 Here’s a basic overview of how the QuickSort algorithm works.  
-![q](https://github.com/user-attachments/assets/af5016e6-cc78-41c4-901d-e2bbcd12d334)
+
+![q](https://github.com/user-attachments/assets/af5016e6-cc78-41c4-901d-e2bbcd12d334)  
+***
+
+### 3 Implementation of quick sort
+```
+#include <stdio.h>
+
+void swap(int* a, int* b);
+
+// Partition function
+int partition(int arr[], int low, int high) {
+    
+    // Choose the pivot
+    int pivot = arr[high];
+    
+    // Index of smaller element and indicates 
+    // the right position of pivot found so far
+    int i = low - 1;
+
+    // Traverse arr[low..high] and move all smaller
+    // elements to the left side. Elements from low to 
+    // i are smaller after every iteration
+    for (int j = low; j <= high - 1; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    
+    // Move pivot after smaller elements and
+    // return its position
+    swap(&arr[i + 1], &arr[high]);  
+    return i + 1;
+}
+
+// The QuickSort function implementation
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        
+        // pi is the partition return index of pivot
+        int pi = partition(arr, low, high);
+
+        // Recursion calls for smaller elements
+        // and greater or equals elements
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+void swap(int* a, int* b) {
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+int main() {
+    int arr[] = {10, 7, 8, 9, 1, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    quickSort(arr, 0, n - 1);
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    
+    return 0;
+}
+```
+
+### 4 Complexity Analysis of Quick Sort
+***
+#### 4.1 Time Complexity
+
+• Best Case: (Ω(n log n)), Occurs when the pivot element divides the array into two equal halves.  
+• Average Case (θ(n log n)), On average, the pivot divides the array into two parts, but not necessarily equal.  
+• Worst Case: (O(n²)), Occurs when the smallest or largest element is always chosen as the pivot (e.g., sorted arrays).  
+
+#### 4.2 Auxiliary Space
+• O(n), due to recursive call stack
+***
+
+### 5 Advantages of Quick Sort
+
+• It is a divide-and-conquer algorithm that makes it easier to solve problems.  
+• It is efficient on large data sets.  
+• It has a low overhead, as it only requires a small amount of memory to function.  
+• It is Cache Friendly as we work on the same array to sort and do not copy data to any auxiliary array.  
+• Fastest general purpose algorithm for large data when stability is not required.  
+• It is tail recursive and hence all the tail call optimization can be done.  
+### 6 Disadvantages of Quick Sort
+
+• It has a worst-case time complexity of O(n2), which occurs when the pivot is chosen poorly.  
+• It is not a good choice for small data sets.  
+• It is not a stable sort, meaning that if two elements have the same key, their relative order will not be preserved in the sorted output in case of quick sort, because here we are swapping elements according to the pivot’s position (without considering their original positions).  
+
 - [Контест №1 (16.11.24-17.11.24)](https://github.com/sofa797/HSE/tree/main/course%20C)
 - [Контест №2 (07.12.24-08.12.24)]()
