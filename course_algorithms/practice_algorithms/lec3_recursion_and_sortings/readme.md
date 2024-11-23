@@ -14,8 +14,7 @@ It follows a divide-and-conquer approach to sort a given array of elements.
 #### 2.1 How does merge sort work?
 
 
-##### 1. Split: Recursively divide a list or array into two halves until it can no
-longer be split.  
+##### 1. Split: Recursively divide a list or array into two halves until it can no longer be split.  
 ##### 2. Conquer: Each subarray is sorted individually using the merge sort algorithm.  
 ##### 3. Merge: The sorted subarrays are merged back in sorted order. The process continues until all elements from both subarrays have been merged.  
 ***
@@ -27,7 +26,7 @@ Let’s sort the array or list [38, 27, 43, 10] using merge sort.
 ![13](https://github.com/user-attachments/assets/8f26b215-5e19-45e2-b12d-9e148881c9f5)
 ![14](https://github.com/user-attachments/assets/5bd7b317-f8f9-4fc7-8bec-15587df3f63d)   
 
-##### 1. Divide array
+##### 1. Divide array ``` [38, 27, 43, 10] ```  
 • [38, 27] and [43, 10].    
 • [38, 27] is divided into [38] and [27].  
 • [43, 10] is divided into [43] and [10]  
