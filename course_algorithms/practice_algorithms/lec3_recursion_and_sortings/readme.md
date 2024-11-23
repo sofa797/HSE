@@ -15,6 +15,7 @@ It follows a divide-and-conquer approach to sort a given array of elements.
 longer be split.
 ##### 2. Conquer: Each subarray is sorted individually using the merge sort algorithm.
 ##### 3. Merge: The sorted subarrays are merged back in sorted order. The process continues until all elements from both subarrays have been merged.
+***
 #### 2.2 Illustration of merge sort
 Let’s sort the array or list [38, 27, 43, 10] using merge sort.
 ##### 1. Divide array
@@ -31,6 +32,7 @@ Let’s sort the array or list [38, 27, 43, 10] using merge sort.
 • Combine [43] and [10] to get [10, 43].  
 • Concatenate [27, 38] and [10, 43] to get final sorted list [10, 27, 38, 43].  
 Therefore, the sorted list is [10, 27, 38, 43].  
+***
 ### 3 Implementation of merge sort
 ```
 // C program for Merge Sort
