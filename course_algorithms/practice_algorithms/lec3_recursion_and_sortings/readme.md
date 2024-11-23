@@ -1,5 +1,4 @@
 # Lecture 3. Recursion, sorting
-Здесь собраны все контесты по курсу "Алгоритмы и структуры данных"
 
 ## Merge sort
 ### 1 Introduction
@@ -16,19 +15,19 @@ longer be split.
 #### 2.2 Illustration of merge sort
 Let’s sort the array or list [38, 27, 43, 10] using merge sort.
 ##### 1. Divide array
-• [38, 27] and [43, 10].
-• [38, 27] is divided into [38] and [27].
-• [43, 10] is divided into [43] and [10]
+• [38, 27] and [43, 10].  
+• [38, 27] is divided into [38] and [27].  
+• [43, 10] is divided into [43] and [10]  
 ##### 2. Conquer
 • [38] already sorted.
 • [27] already sorted.
 • [43] already sorted.
 • [10] already sorted.
 ##### 3. Combine:
-• Combine [38] and [27] to get [27, 38].
-• Combine [43] and [10] to get [10, 43].
-• Concatenate [27, 38] and [10, 43] to get final sorted list [10, 27, 38, 43].
-Therefore, the sorted list is [10, 27, 38, 43].
+• Combine [38] and [27] to get [27, 38].  
+• Combine [43] and [10] to get [10, 43].  
+• Concatenate [27, 38] and [10, 43] to get final sorted list [10, 27, 38, 43].  
+Therefore, the sorted list is [10, 27, 38, 43].  
 ### 3 Implementation of merge sort
 ```
 // C program for Merge Sort
