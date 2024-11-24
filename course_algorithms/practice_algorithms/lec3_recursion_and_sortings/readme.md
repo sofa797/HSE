@@ -14,32 +14,35 @@ It follows a divide-and-conquer approach to sort a given array of elements.
 #### 2.1 How does merge sort work?
 
 
-##### 1. Split: Recursively divide a list or array into two halves until it can no longer be split.  
-##### 2. Conquer: Each subarray is sorted individually using the merge sort algorithm.  
-##### 3. Merge: The sorted subarrays are merged back in sorted order. The process continues until all elements from both subarrays have been merged.  
+##### • Split:
+Recursively divide a list or array into two halves until it can no longer be split.  
+##### • Conquer:
+Each subarray is sorted individually using the merge sort algorithm.  
+##### • Merge:
+The sorted subarrays are merged back in sorted order. The process continues until all elements from both subarrays have been merged.  
 ***
 #### 2.2 Illustration of merge sort
-Let’s sort the array or list [38, 27, 43, 10] using merge sort.  
+Let’s sort the array or list ```[38, 27, 43, 10]``` using merge sort.  
 
 ![11](https://github.com/user-attachments/assets/e210cc27-5555-47b9-a667-388c2291d385)
 ![12](https://github.com/user-attachments/assets/83a394e6-f6cb-4c3d-8b66-57ec2f7fa9ef)
 ![13](https://github.com/user-attachments/assets/8f26b215-5e19-45e2-b12d-9e148881c9f5)
 ![14](https://github.com/user-attachments/assets/5bd7b317-f8f9-4fc7-8bec-15587df3f63d)   
 
-##### 1. Divide array ``` [38, 27, 43, 10] ```  
-• [38, 27] and [43, 10].    
-• [38, 27] is divided into [38] and [27].  
-• [43, 10] is divided into [43] and [10]  
+##### 1. Divide array ```[38, 27, 43, 10]```  
+• ```[38, 27]``` and ```[43, 10]```.    
+• ```[38, 27]``` is divided into ```[38]``` and ```[27]```.  
+• ```[43, 10]``` is divided into ```[43]``` and ```[10]```.
 ##### 2. Conquer
-• [38] already sorted.  
-• [27] already sorted.  
-• [43] already sorted.  
-• [10] already sorted.  
+• ```[38]``` already sorted.  
+• ```[27]``` already sorted.  
+• ```[43]``` already sorted.  
+• ```[10]``` already sorted.  
 ##### 3. Combine:
-• Combine [38] and [27] to get [27, 38].  
-• Combine [43] and [10] to get [10, 43].  
-• Concatenate [27, 38] and [10, 43] to get final sorted list [10, 27, 38, 43].  
-Therefore, the sorted list is [10, 27, 38, 43].  
+• Combine ```[38]``` and ```[27]``` to get ```[27, 38]```.  
+• Combine ```[43]``` and ```[10]``` to get ```[10, 43]```.  
+• Concatenate ```[27, 38]``` and ```[10, 43]``` to get final sorted list ```[10, 27, 38, 43]```.  
+Therefore, the sorted list is ```[10, 27, 38, 43]```.  
 ***
 
 ### 3 Implementation of merge sort
@@ -143,12 +146,12 @@ int main()
 ### 4 Complexity Analysis of Merge Sort
 ***
 #### 1. Time Complexity:
-• Best Case: O(n log n), When the array is already sorted or nearly
+• Best Case: ```O(n*log(n))```, When the array is already sorted or nearly
 sorted.  
-• Average Case: O(n log n), When the array is randomly ordered.  
-• Worst Case: O(n log n), When the array is sorted in reverse order.  
+• Average Case: ```O(n*log(n))```, When the array is randomly ordered.  
+• Worst Case: ```O(n*log(n))```, When the array is sorted in reverse order.  
 #### 2. Auxiliary Space:
-• O(n), Additional space is required for the temporary array used
+• ```O(n)```, Additional space is required for the temporary array used
 during merging.
 ***
 
@@ -267,12 +270,12 @@ int main() {
 ***
 #### 4.1 Time Complexity
 
-• Best Case: (Ω(n log n)), Occurs when the pivot element divides the array into two equal halves.  
-• Average Case (θ(n log n)), On average, the pivot divides the array into two parts, but not necessarily equal.  
-• Worst Case: (O(n²)), Occurs when the smallest or largest element is always chosen as the pivot (e.g., sorted arrays).  
+• Best Case: ```(Ω(n*log(n)))```, Occurs when the pivot element divides the array into two equal halves.  
+• Average Case ```(θ(n*log(n)))```, On average, the pivot divides the array into two parts, but not necessarily equal.  
+• Worst Case: ```(O(n²))```, Occurs when the smallest or largest element is always chosen as the pivot (e.g., sorted arrays).  
 
 #### 4.2 Auxiliary Space
-• O(n), due to recursive call stack
+• ```O(n)```, due to recursive call stack
 ***
 
 ### 5 Advantages of Quick Sort
@@ -285,7 +288,7 @@ int main() {
 • It is tail recursive and hence all the tail call optimization can be done.  
 ### 6 Disadvantages of Quick Sort
 
-• It has a worst-case time complexity of O(n2), which occurs when the pivot is chosen poorly.  
+• It has a worst-case time complexity of ```O(n²)```, which occurs when the pivot is chosen poorly.  
 • It is not a good choice for small data sets.  
 • It is not a stable sort, meaning that if two elements have the same key, their relative order will not be preserved in the sorted output in case of quick sort, because here we are swapping elements according to the pivot’s position (without considering their original positions).  
 
