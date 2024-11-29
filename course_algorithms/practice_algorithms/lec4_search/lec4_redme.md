@@ -1,157 +1,65 @@
-# Lecture 3. Recursion, sorting
-Здесь собраны все контесты по курсу "Алгоритмы и структуры данных"
+# Lecture 4. Search
 
-## Merge sort
+## Linear search
 ### 1 Introduction
-Merge sort is a sorting algorithm that follows the divide-and-conquer approach. It works by recursively dividing the input array into smaller subarrays and sorting those subarrays then merging them back together to obtain the sorted array.
-In simple terms, we can say that the process of merge sort is to divide the array into two halves, sort each half, and then merge the sorted halves back together. This process is repeated until the entire array is sorted.
+In Linear Search, we iterate over all the elements of the array and check if it the current element is equal to the target element. If we find any element to be equal to the target element, then return the index of the current element. Otherwise, if no element is equal to the target element, then return -1 as the element is not found. Linear search is also known as sequential search.
 ### 2 Algorithm
-Merge sort is a popular sorting algorithm known for its efficiency and stability.
-It follows a divide-and-conquer approach to sort a given array of elements.
-#### 2.1 How does merge sort work?
-##### 1. Split: Recursively divide a list or array into two halves until it can no
-longer be split.
-##### 2. Conquer: Each subarray is sorted individually using the merge sort algorithm.
-##### 3. Merge: The sorted subarrays are merged back in sorted order. The process continues until all elements from both subarrays have been merged.
-#### 2.2 Illustration of merge sort
-Let’s sort the array or list [38, 27, 43, 10] using merge sort.
-##### 1. Divide array
-• [38, 27] and [43, 10].
-• [38, 27] is divided into [38] and [27].
-• [43, 10] is divided into [43] and [10]
-##### 2. Conquer
-• [38] already sorted.
-• [27] already sorted.
-• [43] already sorted.
-• [10] already sorted.
-##### 3. Combine:
-• Combine [38] and [27] to get [27, 38].
-• Combine [43] and [10] to get [10, 43].
-• Concatenate [27, 38] and [10, 43] to get final sorted list [10, 27, 38, 43].
-Therefore, the sorted list is [10, 27, 38, 43].
-### 3 Implementation of merge sort
-```
-// C program for Merge Sort
-#include <stdio.h>
-#include <stdlib.h>
+For example: Consider the array ```arr[] = {10, 50, 30, 70, 80, 20, 90, 40}``` and ```key = 30```.
+![l1](https://github.com/user-attachments/assets/ddf30d23-0134-4ca3-99a3-2e9136e27d71)  
+![l2](https://github.com/user-attachments/assets/8083b5e5-5990-4b7b-8646-4e5729d10f37)  
+![l3](https://github.com/user-attachments/assets/102f555b-b7ae-4843-8596-a7f537147503)
 
-// Merges two subarrays of arr[].
-// First subarray is arr[l..m]
-// Second subarray is arr[m+1..r]
-void merge(int arr[], int l, int m, int r)
-{
-    int i, j, k;
-    int n1 = m - l + 1;
-    int n2 = r - m;
-
-    // Create temp arrays
-    int L[n1], R[n2];
-
-    // Copy data to temp arrays L[] and R[]
-    for (i = 0; i < n1; i++)
-        L[i] = arr[l + i];
-    for (j = 0; j < n2; j++)
-        R[j] = arr[m + 1 + j];
-
-    // Merge the temp arrays back into arr[l..r]
-    i = 0;
-    j = 0;
-    k = l;
-    while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) {
-            arr[k] = L[i];
-            i++;
-        }
-        else {
-            arr[k] = R[j];
-            j++;
-        }
-        k++;
-    }
-
-    // Copy the remaining elements of L[],
-    // if there are any
-    while (i < n1) {
-        arr[k] = L[i];
-        i++;
-        k++;
-    }
-
-    // Copy the remaining elements of R[],
-    // if there are any
-    while (j < n2) {
-        arr[k] = R[j];
-        j++;
-        k++;
-    }
-}
-
-// l is for left index and r is right index of the
-// sub-array of arr to be sorted
-void mergeSort(int arr[], int l, int r)
-{
-    if (l < r) {
-        int m = l + (r - l) / 2;
-
-        // Sort first and second halves
-        mergeSort(arr, l, m);
-        mergeSort(arr, m + 1, r);
-
-        merge(arr, l, m, r);
-    }
-}
-
-// Function to print an array
-void printArray(int A[], int size)
-{
-    int i;
-    for (i = 0; i < size; i++)
-        printf("%d ", A[i]);
-    printf("\n");
-}
-
-// Driver code
-int main()
-{
-    int arr[] = { 12, 11, 13, 5, 6, 7 };
-    int arr_size = sizeof(arr) / sizeof(arr[0]);
-
-    printf("Given array is \n");
-    printArray(arr, arr_size);
-
-    mergeSort(arr, 0, arr_size - 1);
-
-    printf("\nSorted array is \n");
-    printArray(arr, arr_size);
-    return 0;
-}
-```
-### 4 Complexity Analysis of Merge Sort
+### 3 Complexity Analysis of linear search
 #### 1. Time Complexity:
-• Best Case: O(n log n), When the array is already sorted or nearly
-sorted.
-• Average Case: O(n log n), When the array is randomly ordered.
-• Worst Case: O(n log n), When the array is sorted in reverse order.
+• Best Case: In the best case, the key might be present at the first index. So the best case complexity is O(1).  
+• Average Case: O(n).
+• Worst Case: In the worst case, the key might be present at the last index i.e., opposite to the end from which the search has started in the list. So the worst-case complexity is O(n) where N is the size of the list.
 #### 2. Auxiliary Space:
-• O(n), Additional space is required for the temporary array used
-during merging.
-### 5 Advantages of Merge Sort
-• Stability: Merge sort is a stable sorting algorithm, which means it maintains
-the relative order of equal elements in the input array.
-• Guaranteed worst-case performance: Merge sort has a worst-case
-time complexity of O(N logN), which means it performs well even on
-large datasets.
-• Simple to implement: The divide-and-conquer approach is straightforward.
-• Naturally Parallel: We independently merge subarrays that makes it
-suitable for parallel processing.
-### 6 Disadvantages of Merge Sort
-• Space complexity: Merge sort requires additional memory to store the
-merged sub-arrays during the sorting process.
-• Not in place: Merge sort is not an in-place sorting algorithm, which
-means that additional memory is required to store the sorted data. This
-can be a disadvantage in applications where memory usage is an issue.
-• S is lower than QuickSort overall: QuickSort is more cache friendly
-since it works in-place.
+• O(1) as except for the variable to iterate through the list, no other variable is used. 
+### 4 Advantages of linear search
+• Linear search can be used irrespective of whether the array is sorted or not. It can be used on arrays of any data type.  
+• Does not require any additional memory.  
+• It is a well-suited algorithm for small datasets.  
+### 5 Disadvantages of Merge Sort
+• Linear search has a time complexity of O(n), which in turn makes it slow for large datasets.  
+• Not suitable for large arrays.  
+
+## Binary search
+### 1 Introduction
+Binary search is a search algorithm used to find the position of a target value within a sorted array. It works by repeatedly dividing the search interval in half until the target value is found or the interval is empty. The search interval is halved by comparing the target element with the middle value of the search space.
+### 2 Algorithm
+1. Divide the search space into two halves by finding the middle index “mid”. 
+2. Compare the middle element of the search space with the key. 
+3. If the key is found at middle element, the process is terminated.
+4. If the key is not found at middle element, choose which half will be used as the next search space.
+  1) If the key is smaller than the middle element, then the left side is used for next search.
+  2) If the key is larger than the middle element, then the right side is used for next search.
+5. This process is continued until the key is found or the total search space is exhausted.  
+To understand the working of binary search, consider the following illustration:
+Consider an array ```arr[] = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91}``` and the ```target = 23```.
+![b1](https://github.com/user-attachments/assets/5208e96a-d328-442e-b188-e0ec09c9b26a)
+![b2](https://github.com/user-attachments/assets/3e6240a5-d94e-4d41-81ef-81b2ce0e200a)
+![b3](https://github.com/user-attachments/assets/0302521a-1b68-4edb-bfba-7ea03301899b)
+![b4](https://github.com/user-attachments/assets/02ebb7ae-de84-4fd2-ae94-b73d4e087a1e)
+
+The Binary Search Algorithm can be implemented in the following two ways:  
+- Iterative Binary Search Algorithm
+- Recursive Binary Search Algorithm
+### 3 Complexity Analysis of linear search
+#### 1. Time Complexity:
+• Best Case: O(1).  
+• Average Case: O(log(n)).
+• Worst Case: O(log(n)).
+#### 2. Auxiliary Space:
+• O(1), If the recursive call stack is considered then the auxiliary space will be O(log(n)).  
+### 4 Advantages of linear search
+• Binary search is faster than linear search, especially for large arrays.  
+• More efficient than other searching algorithms with a similar time complexity, such as interpolation search or exponential search.  
+• Binary search is well-suited for searching large datasets that are stored in external memory, such as on a hard drive or in the cloud.  
+### 5 Disadvantages of Merge Sort
+• The array should be sorted.  
+• Binary search requires that the data structure being searched be stored in contiguous memory locations.   
+• Binary search requires that the elements of the array be comparable, meaning that they must be able to be ordered.  
 
 - [Контест №1 (16.11.24-17.11.24)](https://github.com/sofa797/HSE/tree/main/course%20C)
 - [Контест №2 (07.12.24-08.12.24)]()
