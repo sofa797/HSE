@@ -92,5 +92,41 @@ linear search  <  jump search  <  binary search
 • The time complexity of Jump Search is between Linear Search ((O(n)) and Binary Search (O(Log(n))).  
 • Binary Search is better than Jump Search, but Jump Search has the advantage that we traverse back only once (Binary Search may require up to O(Log n) jumps, consider a situation where the element to be searched is the smallest element or just bigger than the smallest). So, in a system where binary search is costly, we use Jump Search.  
 
+## Ternary search
+### 1 Introduction
+Ternary search is a search algorithm that is used to find the position of a target value within a sorted array. It operates on the principle of dividing the array into three parts instead of two, as in binary search. The basic idea is to narrow down the search space by comparing the target value with elements at two points that divide the array into three equal parts.  
+### 2 Algorithm
+1. Initialization:  
+- Set two pointers, left and right, initially pointing to the first and last elements of our search space.  
+2. Divide the search space:  
+- Calculate two midpoints, mid1 and mid2, dividing the current search space into three roughly equal parts:  
+- mid1 = left + (right – left) / 3  
+- mid2 = right – (right – left) / 3  
+- The array is now effectively divided into [left, mid1], (mid1, mid2), and [mid2, right].  
+3. Comparison with Target:  
+- If the target is equal to the element at mid1 or mid2, the search is successful, and the index is returned
+- If the target is less than the element at mid1, update the right pointer to mid1 – 1.
+- If the target is greater than the element at mid2, update the left pointer to mid2 + 1.
+- If the target is between the elements at mid1 and mid2, update the left pointer to mid1 + 1 and the right pointer to mid2 – 1.
+4. Repeat or Conclude:  
+- Repeat the process with the reduced search space until the target is found or the search space becomes empty.
+- If the search space is empty and the target is not found, return a value indicating that the target is not present in the array.
+Illustration:  
+![t](https://github.com/user-attachments/assets/a95c535f-fc52-428f-bbc1-04979da6dbb2)
+
+### 3 Complexity Analysis of Ternary search
+#### 1. Time Complexity:
+•  O(2 * log3n).
+#### 2. Auxiliary Space:
+• O(log3n).  
+### 4 Advantages of Ternary search
+• Ternary search can find maxima/minima for unimodal functions, where binary search is not applicable.  
+• Ternary Search has a time complexity of O(2 * log3n), which is more efficient than linear search and comparable to binary search.  
+• Fits well with optimization problems.  
+### 5 Disadvantages of Ternary search
+• Ternary Search is only applicable to ordered lists or arrays, and cannot be used on unordered or non-linear data sets.  
+• Ternary Search takes more time to find maxima/minima of monotonic functions as compared to Binary Search.  
+
+
 - [Контест №1 (16.11.24-17.11.24)](https://github.com/sofa797/HSE/tree/main/course%20C)
 - [Контест №2 (07.12.24-08.12.24)]()
