@@ -12,7 +12,7 @@ For example: Consider the array ```arr[] = {10, 50, 30, 70, 80, 20, 90, 40}``` a
 ### 3 Complexity Analysis of linear search
 #### 1. Time Complexity:
 • Best Case: In the best case, the key might be present at the first index. So the best case complexity is O(1).  
-• Average Case: O(n).
+• Average Case: O(n).  
 • Worst Case: In the worst case, the key might be present at the last index i.e., opposite to the end from which the search has started in the list. So the worst-case complexity is O(n) where N is the size of the list.
 #### 2. Auxiliary Space:
 • O(1) as except for the variable to iterate through the list, no other variable is used. 
@@ -32,8 +32,8 @@ Binary search is a search algorithm used to find the position of a target value 
 2. Compare the middle element of the search space with the key. 
 3. If the key is found at middle element, the process is terminated.
 4. If the key is not found at middle element, choose which half will be used as the next search space.
-  1) If the key is smaller than the middle element, then the left side is used for next search.
-  2) If the key is larger than the middle element, then the right side is used for next search.
+  - If the key is smaller than the middle element, then the left side is used for next search.
+  - If the key is larger than the middle element, then the right side is used for next search.
 5. This process is continued until the key is found or the total search space is exhausted.  
 To understand the working of binary search, consider the following illustration:
 Consider an array ```arr[] = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91}``` and the ```target = 23```.
@@ -48,8 +48,8 @@ The Binary Search Algorithm can be implemented in the following two ways:
 ### 3 Complexity Analysis of linear search
 #### 1. Time Complexity:
 • Best Case: O(1).  
-• Average Case: O(log(n)).
-• Worst Case: O(log(n)).
+• Average Case: O(log(n)).  
+• Worst Case: O(log(n)).  
 #### 2. Auxiliary Space:
 • O(1), If the recursive call stack is considered then the auxiliary space will be O(log(n)).  
 ### 4 Advantages of linear search
