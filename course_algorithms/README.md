@@ -4,6 +4,7 @@ Here are collected all the tasks I implemented from the contests in the course "
 ## Algorithms
 - [Lection 2](https://github.com/sofa797/HSE/tree/main/course_algorithms/practice_algorithms/lec2_simplesortings)
 - [Lection 3](https://github.com/sofa797/HSE/tree/main/course_algorithms/practice_algorithms/lec3_recursion_and_sortings)
+- [Lection 4](https://github.com/sofa797/HSE/tree/main/course_algorithms/practice_algorithms/lec4_search)
 
 ## Contests
 - [Contest 1 (11/16/24 - 11/17/24)](https://github.com/sofa797/HSE/tree/main/course_algorithms/contests/1st_contest)
