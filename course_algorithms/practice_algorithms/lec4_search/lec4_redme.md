@@ -75,12 +75,12 @@ linear search  <  jump search  <  binary search
 - Once a value greater than the target is found, perform a linear search starting from the previous step until the target is found or it is clear that the target is not in the array.
 - If the target is found, return its index. If not, return -1 to indicate that the target was not found in the array. 
 
-### 3 Complexity Analysis of Binary search
+### 3 Complexity Analysis of Jump search
 #### 1. Time Complexity:
 •  O(?n).
 #### 2. Auxiliary Space:
 • O(1).  
-### 4 Advantages of Binary search
+### 4 Advantages of Jump search
 • Better than a linear search for arrays where the elements are uniformly distributed.  
 • Jump search has a lower time complexity compared to a linear search for large arrays.  
 • The number of steps taken in jump search is proportional to the square root of the size of the array, making it more efficient for large arrays.  
