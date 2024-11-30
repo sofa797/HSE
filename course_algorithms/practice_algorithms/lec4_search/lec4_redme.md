@@ -127,6 +127,42 @@ Illustration:
 • Ternary Search is only applicable to ordered lists or arrays, and cannot be used on unordered or non-linear data sets.  
 • Ternary Search takes more time to find maxima/minima of monotonic functions as compared to Binary Search.  
 
+## Exponential search
+### 1 Introduction
+The name of this searching algorithm may be misleading as it works in O(Log n) time. The name comes from the way it searches an element.  
+### 2 Algorithm
+The idea is to start with subarray size 1, compare its last element with x, then try size 2, then 4 and so on until last element of a subarray is not greater.  
+Once we find an index i (after repeated doubling of i), we know that the element must be present between i/2 and i (Why i/2? because we could not find a greater value in previous iteration).  
+### 3 Complexity Analysis of Exponential search
+#### 1. Time Complexity:
+• O(log(n)).  
+#### 2. Auxiliary Space:
+• The above implementation of Binary Search is recursive and requires  O(log(n)) space. With iterative Binary Search, we need only O(1) space.  
+### 4 Applications of Exponential Search
+Exponential Binary Search is particularly useful for unbounded searches, where size of array is infinite.  
+It works better than Binary Search for bounded arrays, and also when the element to be searched is closer to the first element.
 
-- [Контест №1 (16.11.24-17.11.24)](https://github.com/sofa797/HSE/tree/main/course%20C)
-- [Контест №2 (07.12.24-08.12.24)]()
+## interpolation search
+### 1 Introduction
+The Interpolation Search is an improvement over Binary Search for instances, where the values in a sorted array are uniformly distributed. Interpolation constructs new data points within the range of a discrete set of known data points. Binary Search always goes to the middle element to check. On the other hand, interpolation search may go to different locations according to the value of the key being searched. For example, if the value of the key is closer to the last element, interpolation search is likely to start search toward the end side.  
+To find the position to be searched, it uses the following formula.  
+![int](https://github.com/user-attachments/assets/cd96c7ed-9bb9-4700-8627-59733c200da0)
+
+### 2 Algorithm
+• In a loop, calculate the value of “pos” using the probe position formula.  
+• Step2: If it is a match, return the index of the item, and exit.  
+• Step3: If the item is less than arr[pos], calculate the probe position of the left sub-array. Otherwise, calculate the same in the right sub-array.  
+• Step4: Repeat until a match is found or the sub-array reduces to zero.  
+
+### 3 Complexity Analysis of Interpolation search
+#### 1. Time Complexity:
+• O(log2(log2(n))) for the average case, and O(n) for the worst case.  
+#### 2. Auxiliary Space:
+• O(1).  
+
+- [Linear Search](https://www.geeksforgeeks.org/linear-search/)
+- [Binary Search](https://www.geeksforgeeks.org/binary-search/)
+- [Jump Search](https://www.geeksforgeeks.org/jump-search/)
+- [Ternary Search](https://www.geeksforgeeks.org/ternary-search/)
+- [Exponential Search](https://www.geeksforgeeks.org/exponential-search/)
+- [Interpolation Search](https://www.geeksforgeeks.org/interpolation-search/)
