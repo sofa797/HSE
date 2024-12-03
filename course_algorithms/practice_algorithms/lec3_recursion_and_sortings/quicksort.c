@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 // Partition function
-int partition(int arr[], int low, int high) {
+int partition_lomuto(int arr[], int low, int high) {
     
     // Choose the pivot
     int pivot = arr[high];
@@ -28,12 +28,35 @@ int partition(int arr[], int low, int high) {
     return i + 1;
 }
 
+void swap_arr(int a[], int f, int s) {
+    int t = a[f];
+    a[f] = a[s];
+    a[s] = t;
+}
+
+int partition_hoar(int a[], int l, int r) {
+    int pi = (a[l] + a[r]) / 2;
+    int i = l, j = r;
+    while (1) {
+        while (a[i] < pi) {
+            i++;
+        };
+        while (a[j] > pi) {
+            j--;
+        };
+        if (i >= j) {
+            return j;
+        }
+        swap_arr(a, i++, j--);
+    }
+}
+
 // The QuickSort function implementation
 void quickSort(int arr[], int low, int high) {
     if (low < high) {
         
         // pi is the partition return index of pivot
-        int pi = partition(arr, low, high);
+        int pi = partition_lomuto(arr, low, high);
 
         // Recursion calls for smaller elements
         // and greater or equals elements
