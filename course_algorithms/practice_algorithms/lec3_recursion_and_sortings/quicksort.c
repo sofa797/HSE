@@ -60,7 +60,7 @@ void quickSort(int arr[], int low, int high) {
 
         // Recursion calls for smaller elements
         // and greater or equals elements
-        quickSort(arr, low, pi - 1);
+        quickSort(arr, low, pi - 1);  // just "pi" in hoar
         quickSort(arr, pi + 1, high);
     }
 }
