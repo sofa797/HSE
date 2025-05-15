@@ -7,5 +7,7 @@ Here are collected all the tasks I implemented from the contests in the course "
 - [Lection 4](https://github.com/sofa797/HSE/tree/main/course_algorithms/practice_algorithms/lec4_search)
 
 ## Contests
-- [Contest 1 (11/16/24 - 11/17/24)](https://github.com/sofa797/HSE/tree/main/course_algorithms/contests/1st_contest)
-- [Contest 2 (12/07/24 - 12/08/24)](https://github.com/sofa797/HSE/tree/main/course_algorithms/contests/2nd_contest)
+- [Contest 1](https://github.com/sofa797/HSE/tree/main/course_algorithms/contests/1st_contest)
+- [Contest 2](https://github.com/sofa797/HSE/tree/main/course_algorithms/contests/2nd_contest)
+- [Contest 3](https://github.com/sofa797/HSE/tree/main/course_algorithms/contests/3rd_contest)
+- [Contest 4](https://github.com/sofa797/HSE/tree/main/course_algorithms/contests/4th_contest)
